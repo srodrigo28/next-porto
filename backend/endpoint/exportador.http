@@ -1,0 +1,20 @@
+GET http://localhost:8080/exportador
+
+###
+POST http://localhost:8080/exportador
+Content-Type: application/json
+
+{
+    "nome": "Exportador -1",
+    "ativo": "Sim"
+}
+
+PATCH http://localhost:8080/exportador/1
+Content-Type: application/json
+
+{
+    "nome": "Exportador Alterado",
+    "ativo": "sim"
+}
+
+DELETE http://localhost:8080/exportador/1

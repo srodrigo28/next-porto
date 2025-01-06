@@ -1,0 +1,209 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuarios{
+    id Int @id @default(autoincrement())
+    email String @unique
+    nome  String?
+    senha String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("usuario")
+}
+
+model Navios{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("navio")
+}
+
+model Portos{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("porto")
+}
+
+model Operadores{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("operador")
+}
+
+model Exportadores{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("exportador")
+}
+
+model Operacoes{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("operacao")
+}
+
+model Destinos{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("destino")
+}
+
+model Cargas{
+    id Int @id @default(autoincrement())
+    nome  String?
+    valor Decimal?
+    ativo String?
+
+    @@map("carga")
+}
+
+model Funcoes{
+    id Int @id @default(autoincrement())
+    idFun String? @unique
+    nome  String?
+    ativo String?
+
+    @@map("funcao")
+}
+
+model Categorias{
+    id      Int     @id @default(autoincrement())
+    codigo  String  @unique
+    nome    String  @unique
+    ativo   String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@map("categoria")
+}
+
+model Ocorrencias{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("ocorrencia")
+}
+
+model Funcionarios{
+    id Int @id @default(autoincrement())
+    matricula String? @unique
+    nome  String?
+    idcategoria Int?
+    admissao DateTime?
+    telefone String?
+    email String @unique
+    image String? 
+    ativo String?
+    obs String
+
+    @@map("funcionario")
+}
+
+model Periodos{
+    id Int @id @default(autoincrement())
+    nome  String?
+    ativo String?
+
+    @@map("periodo")
+}
+
+model Localizacao{
+    id Int @id @default(autoincrement())
+    nome String?
+
+    @@map("localizacao")
+}
+
+model DiaTrabalhados{
+    id Int @id @default(autoincrement())
+    nome String?
+
+    @@map("diatrabalhado")
+}
+
+model Ponto{
+    id Int @id @default(autoincrement())
+    idnavio Int?
+    idporto  Int?
+    idoperacao Int?
+    idoperador Int?
+    idlocalizacao Int?
+    iddiatrab Int?
+    datamovto DateTime?
+    viagem String? 
+    idlistacarga Int?    
+    @@map("ponto")
+}
+
+model ListaCargas{
+    id Int @id @default(autoincrement())
+    idponto Int ?
+    nome String?
+    idcarga Int?
+    iddestino Int?
+    codigomarca String?
+    quantidade Int?
+    peso Decimal?
+    metro Decimal?
+    data DateTime?
+
+    @@map("listacarga")
+}
+
+model ListaFuncionarios{
+    id Int @id @default(autoincrement())
+    idponto Int?
+    terno String?
+    idfuncionario Int?
+    idfuncao Int?
+    periodos String?
+    data DateTime?
+
+    @@map("listafuncionario")
+}
+
+model TaxaSemana{
+    id Int @id @default(autoincrement())
+    iddia String?
+    idperiodo Int?
+    taxachefe Decimal?
+    taxaprancha Decimal?
+    perc_aumento Int?
+
+    @@map("taxasemana")
+}
+
+model TaxaIndividual{
+    id Int @id @default(autoincrement())
+    valor Decimal?
+    obs String?
+
+    @@map("taxaindividual")
+}

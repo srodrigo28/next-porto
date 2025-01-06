@@ -1,0 +1,23 @@
+GET http://localhost:8080/categoria
+
+###
+POST http://localhost:8080/categoria
+Content-Type: application/json
+
+{
+    "codigo": "2.0.6",
+    "nome": " teste categoria",
+    "ativo": "Não"
+}
+
+###
+PATCH http://localhost:8080/categoria/1
+Content-Type: application/json
+
+{
+    "nome": " vendas ",
+    "ativo": "sim"
+}
+
+###
+DELETE http://localhost:8080/categoria/2

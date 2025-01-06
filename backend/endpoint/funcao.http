@@ -1,0 +1,21 @@
+GET http://localhost:8080/funcao
+
+
+POST http://localhost:8080/funcao
+Content-Type: application/json
+
+{
+    "idFun": "115",
+    "nome": "Estiva Balsa Fundo",
+    "ativo": "sim"
+}
+
+PATCH http://localhost:8080/funcao/1
+Content-Type: application/json
+
+{
+    "nome": "Fundo",
+    "ativo": "não"
+}
+
+DELETE http://localhost:8080/funcao/5

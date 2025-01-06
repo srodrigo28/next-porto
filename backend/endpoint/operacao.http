@@ -1,0 +1,20 @@
+GET http://localhost:8080/operacao
+
+###
+POST http://localhost:8080/operacao
+Content-Type: application/json
+
+{
+    "nome": "Descarga",
+    "ativo": "Sim"
+}
+
+PATCH http://localhost:8080/operacao/4
+Content-Type: application/json
+
+{
+    "nome": "Remoção Balsa Bordo",
+    "ativo": "sim"
+}
+
+DELETE http://localhost:8080/operacao/6
