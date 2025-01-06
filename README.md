@@ -5,3 +5,8 @@
 * 15º mês
 
 <img src="./screens/page1.png" alt="não carregou">
+
+* .env
+```
+DATABASE_URL="file:./dev.db"
+```
